@@ -35,7 +35,7 @@ sudo usermod -aG docker jenkins
 <img src = "img/1-1-2.png" width = 60%>  
 перезапустим docker sudo systemctl restart docker  
 сделаем резолв  
-<img src = "img/1-1-3.png" width = 60%>
+<img src = "img/1-1-3.png" width = 60%>  
 откроем в браузере адрес 192.168.65.134:8080  
 <img src = "img/1-1-4.png" width = 60%>   
 возьмем пароль в файле /var/lib/jenkins/secrets/initialAdminPassword  
