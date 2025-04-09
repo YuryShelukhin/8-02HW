@@ -27,11 +27,11 @@ sudo (apt install default-jre (не работает!)) - apt-get install openjd
 curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null  
 sudo apt install jenkins  
-добавим дженкинс в группу docker 
+добавим дженкинс в группу docker   
 sudo usermod -aG docker jenkins  
 проверим id jenkins  
 разрешаем автозапуск systemctl enable jenkins  
-разрешим docker передавать пакеты в формате http  
+разрешим docker передавать пакеты в формате http   
 <img src = "img/1-1-2.png" width = 60%>  
 перезапустим docker sudo systemctl restart docker  
 сделаем резолв  
@@ -41,7 +41,7 @@ sudo usermod -aG docker jenkins
 возьмем пароль в файле /var/lib/jenkins/secrets/initialAdminPassword  
 установим и запустим nexus на ВМ с ip  192.168.65.132    
 docker run -d -p 192.168.65.132:8081:8081 -p 192.168.65.132:8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms512m -Xmx512m -XX:MaxDirectMemorySize=273m" sonatype/nexus3  
-проверим sudo docker contaner ls --all  
+проверим sudo docker contaner ls --all   
 выведем пароль администратора для первого логина в Nexus (для ip.....132)  
 docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'    
 откроем на ВМ ...134 в браузере адрес 192.168.65.132:8081   Авторизуемся  
@@ -52,7 +52,7 @@ docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
 <img src = "img/1-1-6.png" width = 60%>  
 <img src = "img/1-1-7.png" width = 60%>    
 <img src = "img/1-1-8.png" width = 60%>   
-протестируем, исправим ошибки, получим на выходе:  
+протестируем, исправим ошибки, получим на выходе:   
 <img src = "img/1-1-9.png" width = 60%>    
 сборка произошла.  Настройка выгрузки в репозитории Nexus будет осуществлена в задании 2.  
 
@@ -72,8 +72,8 @@ docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
 ## Решение 2  
 
 1. создадим репозиторий в Nexus:  
-img src = "img/2-0-1.png" width = 60%  
-img src = "img/2-0-2.png" width = 60%  
+<img src = "img/2-0-1.png" width = 60%>   
+<img src = "img/2-0-2.png" width = 60%>    
 внесем скрипт в pipeline jenkins:   
 pipeline {  
  agent any  
