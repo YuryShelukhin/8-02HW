@@ -37,35 +37,35 @@ sudo usermod -aG docker jenkins
 сделаем резолв  
 <img src = "img/1-1-3.png" width = 60%>
 откроем в браузере адрес 192.168.65.134:8080  
-<img src = "img/1-1-4.png" width = 60%>  
+<img src = "img/1-1-4.png" width = 60%>   
 возьмем пароль в файле /var/lib/jenkins/secrets/initialAdminPassword  
-установим и запустим nexus на ВМ с ip  192.168.65.132  
+установим и запустим nexus на ВМ с ip  192.168.65.132    
 docker run -d -p 192.168.65.132:8081:8081 -p 192.168.65.132:8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms512m -Xmx512m -XX:MaxDirectMemorySize=273m" sonatype/nexus3  
 проверим sudo docker contaner ls --all  
 выведем пароль администратора для первого логина в Nexus (для ip.....132)  
-docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'  
+docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'    
 откроем на ВМ ...134 в браузере адрес 192.168.65.132:8081   Авторизуемся  
 <img src = "img/1-1-5.png" width = 60%>    
-в jenkins:
-  create job
-  frestyle projekt, name my_pipe  
+в jenkins:  
+  create job  
+  frestyle projekt, name my_pipe    
 <img src = "img/1-1-6.png" width = 60%>  
-<img src = "img/1-1-7.png" width = 60%>   
+<img src = "img/1-1-7.png" width = 60%>    
 <img src = "img/1-1-8.png" width = 60%>   
 протестируем, исправим ошибки, получим на выходе:  
 <img src = "img/1-1-9.png" width = 60%>    
-сборка произошла.  Настройка выгрузки в репозитории Nexus будет осуществлена в задании 2.
+сборка произошла.  Настройка выгрузки в репозитории Nexus будет осуществлена в задании 2.  
 
 ---
 
 ### Задание 2
 
-**Что нужно сделать:**
+**Что нужно сделать:**  
 
-1. Создайте новый проект pipeline.
-2. Перепишите сборку из задания 1 на declarative в виде кода.
+1. Создайте новый проект pipeline.  
+2. Перепишите сборку из задания 1 на declarative в виде кода.  
 
-В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
+В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.  
 
 ---
 
