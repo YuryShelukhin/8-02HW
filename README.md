@@ -1,4 +1,4 @@
-# Домашнее задание к занятию «Что такое DevOps. СI/СD»
+# Домашнее задание к занятию «Что такое DevOps. СI/СD» Шелухин Юрий
 
 ### Задание 1
 
@@ -14,7 +14,7 @@
 
 ## Решение 1
 сделаем форк репозитория  
-<img src = "img/1-1-1.png" width = 60%>  
+<img src = "img/1-1-1.png" width = 60%>   
 установим docker и go последних версий на обе (!) виртуальные машины  
 скачаем архив с адреса https://go.dev/dl/  
 удалим предыдущую версию  rm -rf /usr/local/go   
@@ -30,9 +30,9 @@ sudo apt install jenkins
 добавим дженкинс в группу docker 
 sudo usermod -aG docker jenkins  
 проверим id jenkins  
-разрешаем автозапуск systemctl enable jenkins
-разрешим docker передавать пакеты в формате http
-<img src = "img/1-1-2.png" width = 60%>
+разрешаем автозапуск systemctl enable jenkins  
+разрешим docker передавать пакеты в формате http  
+<img src = "img/1-1-2.png" width = 60%>  
 перезапустим docker sudo systemctl restart docker  
 сделаем резолв  
 <img src = "img/1-1-3.png" width = 60%>
@@ -43,8 +43,8 @@ sudo usermod -aG docker jenkins
 docker run -d -p 192.168.65.132:8081:8081 -p 192.168.65.132:8082:8082 --name nexus -e INSTALL4J_ADD_VM_PARAMS="-Xms512m -Xmx512m -XX:MaxDirectMemorySize=273m" sonatype/nexus3  
 проверим sudo docker contaner ls --all  
 выведем пароль администратора для первого логина в Nexus (для ip.....132)  
-docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
-откроем на ВМ ...134 в браузере адрес 192.168.65.132:8081. Авторизуемся  
+docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'  
+откроем на ВМ ...134 в браузере адрес 192.168.65.132:8081   Авторизуемся  
 <img src = "img/1-1-5.png" width = 60%>    
 в jenkins:
   create job
@@ -56,6 +56,8 @@ docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
 <img src = "img/1-1-9.png" width = 60%>    
 сборка произошла.  Настройка выгрузки в репозитории Nexus будет осуществлена в задании 2.
 
+---
+
 ### Задание 2
 
 **Что нужно сделать:**
@@ -65,9 +67,11 @@ docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
 
 В качестве ответа пришлите скриншоты с настройками проекта и результатами выполнения сборки.
 
+---
+
 ## Решение 2  
 
-создадим репозиторий в Nexus:  
+1. создадим репозиторий в Nexus:  
 img src = "img/2-0-1.png" width = 60%  
 img src = "img/2-0-2.png" width = 60%  
 внесем скрипт в pipeline jenkins:   
