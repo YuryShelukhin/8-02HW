@@ -73,8 +73,9 @@ docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
 
 1. создадим репозиторий в Nexus:  
 <img src = "img/2-0-1.png" width = 60%>   
-<img src = "img/2-0-2.png" width = 60%>    
-внесем скрипт в pipeline jenkins:   
+<img src = "img/2-0-2.png" width = 60%> 
+
+2. внесем скрипт в pipeline jenkins:   
 pipeline {  
  agent any    
  stages {    
@@ -97,7 +98,7 @@ pipeline {
   }    
  }   
 }    
-протестируем, исправим ошибки, получим на выходе:  
+3. протестируем, исправим ошибки, получим на выходе:  
 <img src = "img/2-1.png" width = 60%>  
 <img src = "img/2-2.png" width = 60%>  
 <img src = "img/2-3.png" width = 60%>  
