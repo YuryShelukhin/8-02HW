@@ -76,27 +76,27 @@ docker exec -t nexus bash -c 'cat /nexus-data/admin.password && echo'
 <img src = "img/2-0-2.png" width = 60%>    
 внесем скрипт в pipeline jenkins:   
 pipeline {  
- agent any  
- stages {  
-  stage('Git') {  
-   steps {git 'https://github.com/YuryShelukhin/  sdvps-materials.git'}  
+ agent any    
+ stages {    
+  stage('Git') {    
+   steps {git 'https://github.com/YuryShelukhin/  sdvps-materials.git'}   
   }  
-  stage('Test') {  
-   steps {  
-    sh 'go test .'  
-   }  
+  stage('Test') {    
+   steps {    
+    sh 'go test .'    
+   }    
+  }    
+  stage('Build') {    
+   steps {    
+    sh 'docker build . -t ubuntu-bionic:8082/  hello-world:v$BUILD_NUMBER'    
+   }    
   }  
-  stage('Build') {  
-   steps {  
-    sh 'docker build . -t ubuntu-bionic:8082/  hello-world:v$BUILD_NUMBER'  
-   }  
-  }  
-  stage('Push') {  
-   steps {  
-    sh 'docker login ubuntu-bionic:8082 -u admin -p admin && docker push ubuntu-bionic:8082/  hello-world:v$BUILD_NUMBER && docker logout'   }  
-  }  
- }  
-}  
+  stage('Push') {    
+   steps {    
+    sh 'docker login ubuntu-bionic:8082 -u admin -p admin && docker push ubuntu-bionic:8082/  hello-world:v$BUILD_NUMBER && docker logout'   }    
+  }    
+ }   
+}    
 протестируем, исправим ошибки, получим на выходе:  
 <img src = "img/2-1.png" width = 60%>  
 <img src = "img/2-2.png" width = 60%>  
